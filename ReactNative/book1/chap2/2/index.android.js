@@ -29,19 +29,11 @@ export default class MyProject extends Component {
   }
 
   updateNum(newText) {
-    this.setState(() => {
+    this.setState((state) => {
         return {
           inputedNum: newText,
         };
       })
-  }
-
-  updateNum2(newText) {
-    this.setState((state) => {
-      return {
-        inputedNum: newText,
-      };
-    })
   }
 
   updatePW(newText) {
