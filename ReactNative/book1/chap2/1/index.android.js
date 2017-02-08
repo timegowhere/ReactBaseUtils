@@ -6,27 +6,37 @@
 
 import React, { Component } from 'react';
 import {
-  NativeModules,
   AppRegistry,
   StyleSheet,
+  Text,
   View,
-  Text
+  TextInput
 } from 'react-native';
 
-export default class MyProject extends Component {
-  buttonPress() {
-    NativeModules.ExampleInterface.HandleMessage("testMessage");
-  }
+let Dimensions = require('Dimensions');
+let totalWidth = Dimensions.get('window').width;
+let leftStartPoint = totalWidth * 0;
+let componentWidth = totalWidth * 0.6;
 
+export default class MyProject extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}
-              onPress={this.buttonPress}>
-          Welcome to React Native!
+        <TextInput style={styles.numberInputStyle}
+          placeholder={'请输入手机号'} />
+
+        <Text style={styles.textPromptStyle}>
+              您输入的手机号：
+        </Text>
+
+        <TextInput style={styles.passwordInputStyle}
+                   placeholder={'请输入密码'}
+                   password={true} />
+        <Text style={styles.bigTextPrompt}>
+              确定
         </Text>
       </View>
-    )
+    );
   }
 }
 
@@ -37,11 +47,45 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  numberInputStyle: {
+    top: 20,
+    left: leftStartPoint,
+    width: componentWidth,
+    backgroundColor:'gray',
+    fontSize: 20,
+  },
+  textPromptStyle: {
+    top: 30,
+    left: leftStartPoint,
+    width: componentWidth,
+    fontSize: 20,
+  },
+  passwordInputStyle: {
+    top: 50,
+    left: leftStartPoint,
+    width: componentWidth,
+    backgroundColor:'gray',
+    fontSize: 20,
+  },
+  bigTextPrompt: {
+    top: 70,
+    left: leftStartPoint,
+    width: componentWidth,
+    backgroundColor:'gray',
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 60,
+  },
+
   welcome: {
-    fontSize: 30,
+    fontSize: 20,
     textAlign: 'center',
     margin: 10,
-    backgroundColor: 'grey',
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
   },
 });
 
