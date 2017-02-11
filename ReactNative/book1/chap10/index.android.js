@@ -17,8 +17,8 @@ import {
 
 var Image1 = require('./image/image1.jpg');
 var Image2 = require('./image/image2.jpg');
-var PixelRatio = require('PixelRatio');
-let PixelRatio = PixelRatio.get();
+//var PixelRatio = require('PixelRatio');
+//let pixelRatio = PixelRatio.get();
 
 class Image1Displayer extends React.Component {
   constructor(props) {
@@ -189,6 +189,8 @@ export default class MyProject extends React.Component {
 
     this.callbackforLeftButton = this.callbackforLeftButton.bind(this);
     this.changeStateVarBeforeRoute = this.changeStateVarBeforeRoute.bind(this);
+    this.configureScene = this.configureScene.bind(this);
+    this.renderScene = this.renderScene.bind(this);
   }
 
   callbackforLeftButton(aNumber) {
@@ -274,15 +276,15 @@ export default class MyProject extends React.Component {
 
   render() {
     return (
-      <Navigator initialRoute={{
+      <Navigator configureScene={this.configureScene}
+                 renderScene={this.renderScene}
+                 navigationBar={ <Navigator.NavigationBar routeMapper={NavigationBarRouteMapper} />}
+                 initialRoute={{
         name: "1",
         UIIndex: 0,
         cbForLeftButton: this.callbackforLeftButton,
         textForLeftButton: '新文字',
       }}
-                 configureScene={this.configureScene}
-                 navigationBar={ <Navigator.NagationBar routeMapper={NavigationBarRouteMapper} />}
-                 renderScene={this.renderScene}
       />
     )
   }
